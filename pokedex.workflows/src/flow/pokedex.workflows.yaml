@@ -1,0 +1,32 @@
+# [START workflows_pokedex]
+main:
+  params: [input]
+  steps:
+    - checkInputExists:
+        switch:
+          - condition: ${input != null}
+            next: checkSearchTermPokemonInInput
+        next: savePokemon
+    - checkSearchTermPokemonInInput:
+        switch:
+          - condition: ${"pokemon" in input}
+            assign:
+              - pokemonTerm: ${input.pokemon}
+            next: getPokemon
+    - getPokemon:
+        call: http.get
+        args:
+          url: ${"https://pokeapi.co/api/v2/pokemon/"+pokemonTerm}
+        result: pokemonResponse
+    - setFromCallResult:
+        assign:
+          - pokemonResult: ${pokemonResponse.body}
+    - savePokemon:
+        call: http.post
+        args:
+          url: https://us-central1-des-poc.cloudfunctions.net/savePokemon
+          body: ${pokemonResult}
+        result: pokemonSaveResult
+    - returnOutput:
+        return: ${pokemonSaveResult.body}
+# [END workflows_pokedex]
