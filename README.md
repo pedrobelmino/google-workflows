@@ -1,4 +1,4 @@
-LAB para geração de Microserviços Utilizando Axon - CQRS + Event Sourcing + Saga + DDD
+LAB para criação de fluxo de consulta e persistência de pokemons do Google Cloud Workflows
 ============================
 
 **Pré-requisitos**
