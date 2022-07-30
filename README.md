@@ -19,7 +19,7 @@ gcloud functions deploy savePokemon --runtime nodejs16 --trigger-http --allow-un
 gcloud workflows deploy pokedex-workflows --source=pokedex.workflows.yaml --service-account=$SA@$PROJECT.iam.gserviceaccount.com
 ```
 
-**Provisionamento dos recuros**
+**Execucução dos fluxos**
 ```bash
 gcloud workflows run pokedex-workflows --data="{\""pokemon\"":\""pikachu\""}"
 gcloud workflows run pokedex-workflows --data="{\""pokemon\"":\""bulbasaur\""}"
