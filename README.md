@@ -1,4 +1,4 @@
-LAB para criação de fluxo de consulta e persistência de pokemons do Google Cloud Workflows
+LAB para criação de fluxo de consulta e persistência de pokemons utilizando Google Cloud Workflows e cloud functions
 ============================
 
 **Pré-requisitos**
